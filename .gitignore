@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+npm-debug.log
+package-lock.json
+
+# Build
+dist/
+build/
+out/
+.next/
+
+# Environment variables
+.env
+
+# IDE
+.vscode/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
