@@ -9,27 +9,29 @@ export interface AppConfig {
 // 표준국어대사전 API 응답 타입
 export interface StdDictResponse {
   channel: {
-    title: string;
-    link: string;
-    description: string;
-    lastBuildDate: string;
     total: number;
-    start: number;
     num: number;
-    item?: StdDictItem[];
+    title: string;
+    start: number;
+    description: string;
+    item: StdDictItem[];
+    link: string;
+    lastBuildDate: string;
   };
 }
 
 export interface StdDictItem {
-  target_code: number;
+  sup_no: string;
   word: string;
-  sup_no?: number;
+  target_code: string;
+  sense: StdDictSense;
   pos: string;
-  sense: {
-    definition: string;
-    link: string;
-    type: string;
-  };
+}
+
+export interface StdDictSense {
+  definition: string;
+  link: string;
+  type: string;
 }
 
 export interface StdDictError {

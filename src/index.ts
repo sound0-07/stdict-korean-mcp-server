@@ -8,7 +8,7 @@ async function main() {
   const server = new StdDictMcpServer().getServer();
   await server.connect(transport);
 
-  console.log("MCP Server running successfully");
+  //console.log("MCP Server running successfully");
 }
 
 main().catch((error) => {

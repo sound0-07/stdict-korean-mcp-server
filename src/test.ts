@@ -2,11 +2,12 @@
 
 import 'dotenv/config';
 import { StdDictAPI } from './stdict-api.js';
+import { StdDictSense } from './types.js';
 
 async function testDictionaryAPI() {
   try {
     const api = new StdDictAPI();
-    const query = '사과';
+    const query = '오징어';
     console.log(`"${query}" 단어 검색 테스트`);
     
     const result = await api.searchWord(query);
@@ -20,8 +21,13 @@ async function testDictionaryAPI() {
     
     result.channel.item.forEach((item, index) => {
       const supNo = item.sup_no ? `${item.sup_no}` : '';
-      console.log(`${index + 1}. ${item.word}${supNo} (${item.pos})`);
-      console.log(`   ${item.sense.definition}`);
+      console.log(`${index + 1}. ${item.word}${supNo} (${item.pos || '품사 없음'})`);
+      
+      // sense가 배열인 경우와 단일 객체인 경우를 처리
+      const senses = Array.isArray(item.sense) ? item.sense : [item.sense];
+      senses.forEach((sense: StdDictSense, senseIndex) => {
+        console.log(`[${sense.type}] ${sense.definition} (${sense.link})`);
+      });
       console.log();
     });
     
