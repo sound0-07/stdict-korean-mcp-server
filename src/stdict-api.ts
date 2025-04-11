@@ -33,7 +33,6 @@ export class StdDictAPI {
         });
 
         const url = `${this.baseUrl}?${params.toString()}`;
-        // console.log('요청 URL:', url);
 
         try {
             const response = await fetch(url);
@@ -43,7 +42,6 @@ export class StdDictAPI {
             }
             
             const text = await response.text();
-            // console.log('API 응답:', text);
 
             // 빈 응답 체크
             if (!text.trim()) {
